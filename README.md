@@ -19,4 +19,4 @@ The following guides illustrate how to use some features concretely:
 
 ### Developer notes
 
-* Used Postgres DB locally
+* Used Postgres DB locally (create database manually and execute create_tables.sql and insert_data.sql files)
