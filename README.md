@@ -19,4 +19,4 @@ The following guides illustrate how to use some features concretely:
 
 ### Developer notes
 
-* Used Postgres DB localy
+* Used Postgres DB locally
