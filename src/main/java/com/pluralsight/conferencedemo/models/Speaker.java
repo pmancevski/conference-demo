@@ -1,11 +1,15 @@
 package com.pluralsight.conferencedemo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Type;
 
 import java.util.List;
 
 @Entity(name = "speakers")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Speaker {
 
     @Id
@@ -21,7 +25,10 @@ public class Speaker {
     //@Column(name = "speaker_photo", columnDefinition = "bytea")
     private byte[] speaker_photo;
 
+    //solution 1 - JsonBackReference found on stuckOverflow
+    //@JsonBackReference
     @ManyToMany(mappedBy = "speakers")
+    @JsonIgnore
     private List<Session> sessions;
 
     public Speaker(){}

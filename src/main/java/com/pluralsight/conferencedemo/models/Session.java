@@ -1,10 +1,13 @@
 package com.pluralsight.conferencedemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity(name = "sessions")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Session {
 
     @Id
@@ -14,6 +17,9 @@ public class Session {
     private String session_description;
     private Integer session_length;
 
+    //solution 1 - JsonManagedReference found on stuckOverflow
+    //@JsonManagedReference
+    //solution 2 - only JsonIgnore from the course in speaker class
     @ManyToMany
     @JoinTable(name = "session_speakers",
             joinColumns = @JoinColumn(name = "session_id"),

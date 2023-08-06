@@ -18,6 +18,7 @@ public class SessionsController {
 
     @GetMapping
     public List<Session> list(){
+        System.err.println("PETAR TEST");
         return sessionRepository.findAll();
     }
 
